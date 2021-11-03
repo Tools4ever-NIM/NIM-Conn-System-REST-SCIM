@@ -1,0 +1,98 @@
+{
+    "schema": {
+        "options": {},
+        "crud_objects": {
+            "users": {
+                "operations": {
+                    "users_get": {
+                        "method": "get",
+                        "call": {
+                            "path": "/users",
+                            "post_processing": "child_tables"
+                        },
+                        "processing_options": {
+                            "output_field": "employees"
+                        },
+                        "query_parameters": {}
+                    }
+                },
+                "parameters": {},
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "schemas": ["string*"],
+                    "externalId": "string*",
+                    "meta": {
+                        "resourceType": "_:string*",   
+                        "created": "_:string*",
+                        "lastModified": "_:string*",
+                        "location": "_:string*",
+                        "version": "_:string*"
+                    },
+                    "name": {
+                        "formatted": "_:string*",
+                        "familyName": "_:string*",
+                        "givenName": "_:string*",
+                        "middleName": "_:string*",
+                        "honorificPrefix": "_:string*",
+                        "honorificSuffix": "_:string*"
+                    },
+                    "userName": "string*",
+                    "phoneNumbers": [{
+                        "value": "_:string*",
+                        "type": "_:string*"
+                    }],
+                    "emails": [{
+                        "value": "_:string*",
+                        "type": "_:string*",
+                        "primary": "_:boolean*"
+                    }]
+
+                }
+            }
+           
+        }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "{tenant_id}",
+            "get": {
+                "maxPageCount": 500,
+                "query_parameters": {
+                },
+                "pagination": {
+                    "mode": "generic",
+                   "path":[],
+                    "page_size":998,
+                    "params":{
+                        "page":"{page_number}",
+                        "limit":999
+                    }
+                }
+            },
+            "authentication": "basic_auth",
+            "call_handling": "generic",
+            "test_connection": {
+                "url": "/users"
+            },
+            "accept": "application/json"
+        }
+        
+    },
+    "connection": {
+        "items": [
+            {
+                "name": "tenant_id",
+                "type": "textbox",
+                "label": "URL:",
+                "value": ""
+            },
+            {
+                "name": "bearer_token",
+                "type": "textbox",
+                "label": "Token:",
+                "value": ""
+            }
+        ]
+    }
+}
